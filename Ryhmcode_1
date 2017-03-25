@@ -1,0 +1,92 @@
+import java.util.*;
+class ryhm
+{
+    public static void main(String[]args)
+    {
+        Scanner in = new Scanner(System.in);
+        int r,f=0;
+        //System.out.println("Enter the number of memmbers");
+        int k=in.nextInt();
+        int n[]=new int[k];
+        for(int i=0;i<k;i++)
+        {
+            n[i]=i;
+        }
+        //System.out.println("enter the number of words in the ryhm");
+        r=in.nextInt();
+        r-=1;
+        int y=r;
+        for(int u=0;u<k-1;u++)
+              {
+                int b[]= new int[k-u];
+                n=sort(n);
+                for (int i=0;i<b.length;i++)
+                {
+                    b[i]=n[i];
+                }
+                while(y>=b.length)
+                y=y-(b.length);
+                n[pos(n,b[y])]=-1;
+                b[y]=-1;
+                y=y+r;
+                for(int i=0;i<b.length;i++)
+                    if(b[i]>=0)
+                    f=b[i];
+            }
+         System.out.println("The winner is member "+(f+1));
+        }
+    public static int pos(int n[],int k)  
+    {
+            int p=0;
+            for(int i=0;i<n.length;i++)
+            {
+                if(n[i]==k)
+                p=i;
+            }
+            return (p);
+    }
+    public static int[] sort(int[] n) 
+    {
+            int l = n.length;
+            int t = 0;
+            for(int i=0; i < l; i++)
+            {
+                for(int j=1; j < (l-i); j++)
+                {
+                               
+                    if(n[j-1] > n[j])
+                    {
+                        t = n[j-1];
+                        n[j-1] = n[j];
+                        n[j] = t;
+                    }
+                }
+            }
+            int c=0;
+            for(int i=0;i<l;i++)
+            {
+                if(n[i]==-1)
+                c++;
+            }
+            t=0;
+            int v=c;
+            while(v!=0)
+            {
+                for(int i=0;i<(l-1);i++)
+                {
+                    t=n[i];
+                    n[i]=n[i+1];
+                    n[i+1]=n[i];
+                }
+                v--;
+            
+            }
+            for(int i=n.length-1;c!=0;c--,i--)
+            {
+                n[i]=-1;
+            }
+        
+            return n;
+        
+    }
+}       
