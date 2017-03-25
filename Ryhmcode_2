@@ -1,0 +1,58 @@
+import java.util.Scanner;
+class ryhm_shortened
+{
+    static int n,r,k,l;
+    static int a[];
+    public static void main()
+    {
+        Scanner in = new Scanner(System.in);
+        System.out.println("Enter the number of boys/girls");
+        n=in.nextInt();
+        System.out.println("Enter the number of words in the ryhm");
+        r=in.nextInt();
+        r--;k=r;l=n-1;
+        a=new int[n];
+        for(int i=0;i<n;i++)
+            a[i]=i;
+        compute();
+        //for(int i=0;i<a.length;i++)
+        //System.out.print(a[i]+",");
+        for(int i=0;i<a.length;i++)
+            if(a[i]!=-1)
+                System.out.println("The Winner is "+(a[i]+1));
+    }
+    public static void compute()
+    {
+        try{
+            if (oneleft()!=true)
+        {
+            for(int i=k;i<l;i++)
+                a[i]=a[i+1];
+            a[l]=-1;
+            k+=r;    
+            l--;
+            while(k>l)
+                k=k-l-1;
+            compute();
+        }}
+        catch (StackOverflowError e)
+        { compute();
+        }
+
+        return;
+    }
+    public static boolean oneleft()
+    {
+        int c=0;
+        for(int i=0;i<a.length;i++)
+        {
+            if(a[i]!=-1)
+            {
+                c++;
+            }
+        }
+        if(c==1)
+        return true;
+        return false;
+    }
+}
