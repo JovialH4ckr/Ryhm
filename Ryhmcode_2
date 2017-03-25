@@ -6,9 +6,9 @@ class ryhm_shortened
     public static void main()
     {
         Scanner in = new Scanner(System.in);
-        System.out.println("Enter the number of boys/girls");
+        //System.out.println("Enter the number of boys/girls");
         n=in.nextInt();
-        System.out.println("Enter the number of words in the ryhm");
+        //System.out.println("Enter the number of words in the ryhm");
         r=in.nextInt();
         r--;k=r;l=n-1;
         a=new int[n];
